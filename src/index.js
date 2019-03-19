@@ -1,26 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Home from './Home';
-import Main from './Main';
+import { render } from 'react-dom';
+import firebase from 'firebase/app';
+import App from './containers/App';
+import 'firebase/auth';
 import './style.scss';
 
-ReactDOM.render(
-  <Router>
-    <div>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/main/">Main</Link>
-          </li>
-        </ul>
-      </nav>
-      <Route path="/" exact component={Home} />
-      <Route path="/main/" component={Main} />
-    </div>
-  </Router>,
-  document.getElementById('root')
-);
+firebase.initializeApp({
+  apiKey: "AIzaSyDdeg2ga2gD508X3kzAxtZROIXc-bX-mL4",
+  authDomain: "feeding-archive.firebaseapp.com",
+  databaseURL: "https://feeding-archive.firebaseio.com",
+  projectId: "feeding-archive",
+  storageBucket: "feeding-archive.appspot.com",
+  messagingSenderId: "217801729531"
+});
+
+render(<App />, document.getElementById('root'));
